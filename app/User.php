@@ -1,18 +1,16 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property mixed id
+ */
 class User extends Authenticatable
 {
     use Notifiable;
-
-    public function products(){
-        return $this->hasMany(products::class);
-    }
     /**
      * The attributes that are mass assignable.
      *
@@ -30,4 +28,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products(){
+        return $this->hasMany(products::class);
+    }
+
 }

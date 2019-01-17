@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,8 +18,15 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('price');
-            $table->integer('ISBN');
+            $table->string('ISBN');
             $table->timestamps();
+            $table->unsignedInteger('user_id');
+
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

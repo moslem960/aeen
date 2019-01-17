@@ -14,17 +14,20 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','PagesController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products','ProductsController@index');
+Route::post('/products','ProductsController@store')->name('products.store');
+Route::get('/products/create','ProductsController@create')->name('products.create');
+Route::get('/products/{id}','ProductsController@show')->name('products.update');
+Route::get('/products/{id}/edit','ProductsController@edit')->name('products.edit');
+Route::get('/index','pagescontroller@index');
 
+//Route::get('/', function (\Illuminate\Http\Request $request) {
+//    $request->session()->put('name','hosein');
+//    return view('welcome');
+//});
+////////////////////////////
 
-Route::get('/products','ProductController@index');
-Route::get('/products/{id}','ProductController@show');
-Route::get('/products/create','ProductController@create');
-Route::post('/products','ProductController@store')->name('products.store');

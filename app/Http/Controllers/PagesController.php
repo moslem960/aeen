@@ -7,15 +7,13 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     //
-    public function __construct()
-    {
+
+    public function __Construct(){
         $this->middleware('auth')->only('index');
     }
-
-    public function index(){
-
-//        return view('welcome');
-
+    public function index()
+    {
+        return 'hi moslemi jon';
     }
 
 }

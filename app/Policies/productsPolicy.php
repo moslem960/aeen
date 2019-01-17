@@ -6,7 +6,7 @@ use App\User;
 use App\products;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class productspolicy
+class productsPolicy
 {
     use HandlesAuthorization;
 
@@ -43,6 +43,7 @@ class productspolicy
     public function update(User $user, products $products)
     {
         //
+        return $products->user_id == $user->id;
     }
 
     /**
